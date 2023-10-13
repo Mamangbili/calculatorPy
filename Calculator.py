@@ -2,13 +2,13 @@ import math
 
 
 def kali(a, b):
-    if not (isinstance(a, float) and isinstance(b, float)):
+    if not (isinstance(a, (int, float)) and isinstance(b, (int, float))):
         raise TypeError("Type bukan angka")
     return a * b
 
 
 def bagi(a, b):
-    if not (isinstance(a, float) and isinstance(b, float)):
+    if not (isinstance(a, (int, float)) and isinstance(b, (int, float))):
         raise TypeError("Type bukan angka")
     if b == 0:
         raise ValueError("denumerator tidak boleh 0")
@@ -16,21 +16,21 @@ def bagi(a, b):
 
 
 def tambah(a, b):
-    if not (isinstance(a, float) and isinstance(b, float)):
+    if not (isinstance(a, (int, float)) and isinstance(b, (int, float))):
         raise TypeError("Type bukan angka")
     return a + b
 
 
 def kurang(a, b):
-    if not (isinstance(a, float) and isinstance(b, float)):
+    if not (isinstance(a, (int, float)) and isinstance(b, (int, float))):
         raise TypeError("Type bukan angka")
     return a - b
 
 
 def log(a, n):
-    if not (isinstance(a, float) and isinstance(n, float)):
+    if not (isinstance(a, (int, float)) and isinstance(n, (int, float))):
         raise TypeError("Type bukan angka")
-    if 0 <= a <= 1:
+    if n < 0 or n == 1:
         raise ValueError("base tidak boleh 0 sampai 1")
 
     return math.log(a, n)
@@ -185,5 +185,6 @@ class Controller:
                 args[0].clearScreen()
 
 
-view = View()
-controller = Controller(view)
+if __name__ == "__main__":
+    view = View()
+    controller = Controller(view)
